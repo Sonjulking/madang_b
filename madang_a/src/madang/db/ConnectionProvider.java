@@ -1,5 +1,19 @@
 package madang.db;
 
-public class ConnectionProvider {
+import java.sql.Connection;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class ConnectionProvider {
+   public static Connection getconnection() {
+      Connection conn = null;
+      try {
+         Class.forName("oracle.jdbc.driver.OracleDriver");
+         conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "c##madang", "madang");
+      } catch (Exception e) {
+         System.out.println("예외발생 : " + e);
+      }
+      return conn;
+   }
 }
